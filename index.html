@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRO - Borewell Rescue Operations | Emergency Rescue Technology</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <div class="logo">
+                    <span class="logo__icon">🚁</span>
+                    <span class="logo__text">BRO</span>
+                    <span class="logo__subtitle">Rescue Operations</span>
+                </div>
+            </div>
+            <div class="nav__menu">
+                <a href="#emergency" class="nav__link nav__link--emergency">🚨 Emergency</a>
+                <a href="#about" class="nav__link">About</a>
+                <a href="#features" class="nav__link">Features</a>
+                <a href="#team" class="nav__link">Team</a>
+                <a href="#video" class="nav__link">Demo</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__content container">
+            <div class="hero__text">
+                <h1 class="hero__title">Advanced Borewell Rescue Operations</h1>
+                <p class="hero__subtitle">AI-Powered Robotic Rescue System for Critical Emergency Situations</p>
+                <div class="hero__actions">
+                    <button class="btn btn--primary btn--lg" onclick="document.getElementById('emergency').scrollIntoView()">
+                        🚨 Emergency Rescue
+                    </button>
+                    <button class="btn btn--outline btn--lg" onclick="document.getElementById('about').scrollIntoView()">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="tech-grid">
+                    <div class="tech-card">📡 Real-time Monitoring</div>
+                    <div class="tech-card">🤖 AI Control Systems</div>
+                    <div class="tech-card">🛡️ Safe Extraction</div>
+                    <div class="tech-card">🧠 Neural Networks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section id="emergency" class="emergency">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🚨 Emergency Response Center</h2>
+                <p class="section-subtitle">Immediate assistance and GPS-enabled rescue coordination</p>
+            </div>
+            
+            <!-- Emergency Contacts -->
+            <div class="emergency-contacts">
+                <div class="emergency-contact" onclick="callEmergency('112')">
+                    <div class="contact-icon">🚨</div>
+                    <div class="contact-info">
+                        <h3>Emergency Services</h3>
+                        <p>112</p>
+                    </div>
+                </div>
+                <div class="emergency-contact" onclick="callEmergency('100')">
+                    <div class="contact-icon">👮</div>
+                    <div class="contact-info">
+                        <h3>Police</h3>
+                        <p>100</p>
+                    </div>
+                </div>
+                <div class="emergency-contact" onclick="callEmergency('101')">
+                    <div class="contact-icon">🔥</div>
+                    <div class="contact-info">
+                        <h3>Fire Department</h3>
+                        <p>101</p>
+                    </div>
+                </div>
+                <div class="emergency-contact" onclick="callEmergency('102')">
+                    <div class="contact-icon">🚑</div>
+                    <div class="contact-info">
+                        <h3>Ambulance</h3>
+                        <p>102</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Form -->
+            <div class="emergency-form-container">
+                <div class="emergency-form">
+                    <h3>GPS-Enabled Emergency Report</h3>
+                    <form id="emergencyForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contact">Contact Number *</label>
+                            <input type="tel" id="contact" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="location">Location Description</label>
+                            <input type="text" id="location" class="form-control" placeholder="Nearby landmarks, address...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">GPS Coordinates</label>
+                            <div class="gps-info">
+                                <span id="gpsStatus">📍 Getting location...</span>
+                                <button type="button" class="btn btn--sm btn--outline" onclick="getCurrentLocation()">
+                                    Refresh Location
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="details">Emergency Details</label>
+                            <textarea id="details" class="form-control" rows="4" placeholder="Describe the emergency situation..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            🚨 Send Emergency Report
+                        </button>
+                    </form>
+                </div>
+                <div class="map-container">
+                    <div id="map" class="emergency-map">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Interactive map will load here with your location</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About BRO Technology</h2>
+                <p class="section-subtitle">Advanced robotic rescue system engineered for critical borewell emergencies</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>How BRO Works</h3>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">🤖</div>
+                            <div class="feature-content">
+                                <h4>Advanced Robotic Arms</h4>
+                                <p>Precision rescue capabilities designed for narrow borewell spaces with multi-axis movement and delicate handling mechanisms</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">📹</div>
+                            <div class="feature-content">
+                                <h4>Live Camera Feed</h4>
+                                <p>HD video streaming with night vision and thermal imaging for complete situational awareness during rescue operations</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">💨</div>
+                            <div class="feature-content">
+                                <h4>Oxygen Supply System</h4>
+                                <p>Emergency life support with oxygen delivery and air circulation to ensure victim survival during extraction</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">🧠</div>
+                            <div class="feature-content">
+                                <h4>AI-Powered Control</h4>
+                                <p>Machine learning algorithms for obstacle detection, path planning, and automated rescue protocol execution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="materials-section">
+                    <h3>Technical Specifications</h3>
+                    <div class="materials-grid">
+                        <div class="material-card">
+                            <h4>🔧 Stainless Steel Framework</h4>
+                            <p>Corrosion-resistant structural foundation for durability in harsh environments</p>
+                        </div>
+                        <div class="material-card">
+                            <h4>⚡ Carbon Fiber Components</h4>
+                            <p>Ultra-lightweight yet strong materials for enhanced maneuverability</p>
+                        </div>
+                        <div class="material-card">
+                            <h4>🔧 Hydraulic Systems</h4>
+                            <p>Precision-controlled rescue arm operation with variable force application</p>
+                        </div>
+                        <div class="material-card">
+                            <h4>📡 Sensor Array</h4>
+                            <p>Environmental monitoring with pressure, temperature, and gas detection</p>
+                        </div>
+                        <div class="material-card">
+                            <h4>🚀 Rapid Deployment</h4>
+                            <p>Quick assembly system for emergency response within minutes</p>
+                        </div>
+                        <div class="material-card">
+                            <h4>🛡️ Safety Mechanisms</h4>
+                            <p>Multiple fail-safes and soft extraction protocols to prevent injury</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-subtitle">State-of-the-art rescue capabilities powered by advanced technology</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Real-time Monitoring System</h3>
+                    <p>Continuous data during rescue operations with visual feedback and environmental sensors</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">IoT Sensors</span>
+                        <span class="tech-tag">Real-time Analytics</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Multi-functional Rescue Arm</h3>
+                    <p>Robotic tool designed for narrow spaces with manipulation and life support capabilities</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">Precision Control</span>
+                        <span class="tech-tag">Multi-axis Movement</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safe and Efficient Extraction</h3>
+                    <p>Customized extraction plans with non-invasive tools and anti-collapse measures</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">Safety Protocols</span>
+                        <span class="tech-tag">Soft Extraction</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI Integration</h3>
+                    <p>Automated decision-making to improve precision and analyze rescue strategies</p>
+                    <div class="feature-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Neural Networks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Team</h2>
+                <p class="section-subtitle">TEAM EM.TECH - The Emerald Heights International School</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>Shaurya Agarwal</h3>
+                    <p class="team-role">Team Captain</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Innovation</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h3>Rohan Jain</h3>
+                    <p class="team-role">Controller</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">AI Systems</span>
+                        <span class="skill-tag">Robotics</span>
+                        <span class="skill-tag">Control Systems</span>
+                    </div>
+                </div>
+            </div>
+            <div class="school-info">
+                <h4>🏛️ The Emerald Heights International School</h4>
+                <p>Pioneering innovation in emergency response technology</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technology Demonstration</h2>
+                <p class="section-subtitle">See BRO in action - Advanced rescue operations explained</p>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/0iGIAfUMk7g" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Support & Partnerships</h2>
+                <p class="section-subtitle">Connect with our team for emergency services and collaboration opportunities</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>🚨 Emergency Operations</h3>
+                    <p>24/7 emergency response coordination and technical support for rescue operations</p>
+                </div>
+                <div class="contact-card">
+                    <h3>🤝 Partnership Inquiries</h3>
+                    <p>Collaborate with TEAM EM.TECH for advancing rescue technology and innovation</p>
+                </div>
+                <div class="contact-card">
+                    <h3>🔧 Technical Support</h3>
+                    <p>Expert assistance for BRO system deployment and operational guidance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <span>🤖 BRO Assistant</span>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <p>Hello! I'm the BRO AI Assistant. How can I help you with emergency rescue operations today?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask about rescue operations...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle -->
+    <button class="chatbot-toggle" onclick="toggleChatbot()">
+        🤖
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo__icon">🚁</span>
+                        <span class="logo__text">BRO</span>
+                    </div>
+                    <p>Advanced Borewell Rescue Operations</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Emergency Services</h4>
+                    <a href="tel:112">Emergency: 112</a>
+                    <a href="tel:100">Police: 100</a>
+                    <a href="tel:101">Fire: 101</a>
+                    <a href="tel:102">Ambulance: 102</a>
+                </div>
+                <div class="footer-tech">
+                    <h4>Technology</h4>
+                    <p>AI-Powered Rescue Systems</p>
+                    <p>GPS-Enabled Emergency Response</p>
+                    <p>Real-time Monitoring</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BRO - Borewell Rescue Operations. TEAM EM.TECH</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
